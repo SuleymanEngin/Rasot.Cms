@@ -1,4 +1,9 @@
-G
->D:\WorkSpace\Rasot\src\Library\Rasot.Core\Domain\BaseEntity.csutf-8J
-AD:\WorkSpace\Rasot\src\Library\Rasot.Core\Domain\Contents\Page.csutf-8O
-FD:\WorkSpace\Rasot\src\Library\Rasot.Core\Domain\Customers\Customer.csutf-8
+g
+^D:\WorkSpace\Rasot\src\Library\Rasot.Service\Services\Authentications\AuthenticationService.csutf-8h
+_D:\WorkSpace\Rasot\src\Library\Rasot.Service\Services\Authentications\IAuthenticationService.csutf-8e
+\D:\WorkSpace\Rasot\src\Library\Rasot.Service\Services\Authentications\Models\LoginRequest.csutf-8f
+]D:\WorkSpace\Rasot\src\Library\Rasot.Service\Services\Authentications\Models\LoginResponse.csutf-8h
+_D:\WorkSpace\Rasot\src\Library\Rasot.Service\Services\Authentications\Models\RegisterRequest.csutf-8i
+`D:\WorkSpace\Rasot\src\Library\Rasot.Service\Services\Authentications\Models\RegisterResponse.csutf-8[
+RD:\WorkSpace\Rasot\src\Library\Rasot.Service\Services\Customers\CustomerService.csutf-8\
+SD:\WorkSpace\Rasot\src\Library\Rasot.Service\Services\Customers\ICustomerService.csutf-8

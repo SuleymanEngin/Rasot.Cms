@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ProjectInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
-  <ProjectName>Rasot.Core.Tests</ProjectName>
+  <ProjectName>Rasot.Data</ProjectName>
   <ProjectLanguage>C#</ProjectLanguage>
-  <ProjectType>Test</ProjectType>
-  <ProjectGuid>69267339-eb3c-411e-bb8e-c65c3b33cdde</ProjectGuid>
-  <FullPath>D:\WorkSpace\Rasot\src\Tests\Rasot.Core.Tests\Rasot.Core.Tests.csproj</FullPath>
+  <ProjectType>Product</ProjectType>
+  <ProjectGuid>3a64031e-912c-4f8f-9f8b-1fb4d51919b3</ProjectGuid>
+  <FullPath>D:\WorkSpace\Rasot\src\Library\Rasot.Data\Rasot.Data.csproj</FullPath>
   <IsExcluded>false</IsExcluded>
   <AnalysisResults>
     <AnalysisResult Id="FilesToAnalyze" Location="D:\WorkSpace\Rasot\.sonarqube\out\2\FilesToAnalyze.txt" />
   </AnalysisResults>
-  <AnalysisSettings />
+  <AnalysisSettings>
+    <Property Name="sonar.cs.roslyn.reportFilePath">D:\WorkSpace\Rasot\src\Library\Rasot.Data\bin\Debug\netcoreapp2.2\Rasot.Data.dll.RoslynCA.json|D:\WorkSpace\Rasot\src\Library\Rasot.Data\bin\Debug\netcoreapp2.2\Rasot.Data.dll.RoslynCA.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPath">D:\WorkSpace\Rasot\.sonarqube\out\2</Property>
+  </AnalysisSettings>
   <Configuration>Debug</Configuration>
   <Platform>AnyCPU</Platform>
   <TargetFramework>netcoreapp2.2</TargetFramework>

@@ -1,6 +1,11 @@
-@
->D:\WorkSpace\Rasot\src\Library\Rasot.Core\Domain\BaseEntity.csC
-AD:\WorkSpace\Rasot\src\Library\Rasot.Core\Domain\Contents\Page.csH
-FD:\WorkSpace\Rasot\src\Library\Rasot.Core\Domain\Customers\Customer.csS
-OC:\Users\cgur\AppData\Local\Temp\.NETCoreApp,Version=v2.2.AssemblyAttributes.cs`
-\D:\WorkSpace\Rasot\src\Library\Rasot.Core\obj\Debug\netcoreapp2.2\Rasot.Core.AssemblyInfo.cs
+`
+^D:\WorkSpace\Rasot\src\Library\Rasot.Service\Services\Authentications\AuthenticationService.csa
+_D:\WorkSpace\Rasot\src\Library\Rasot.Service\Services\Authentications\IAuthenticationService.cs^
+\D:\WorkSpace\Rasot\src\Library\Rasot.Service\Services\Authentications\Models\LoginRequest.cs_
+]D:\WorkSpace\Rasot\src\Library\Rasot.Service\Services\Authentications\Models\LoginResponse.csa
+_D:\WorkSpace\Rasot\src\Library\Rasot.Service\Services\Authentications\Models\RegisterRequest.csb
+`D:\WorkSpace\Rasot\src\Library\Rasot.Service\Services\Authentications\Models\RegisterResponse.csT
+RD:\WorkSpace\Rasot\src\Library\Rasot.Service\Services\Customers\CustomerService.csU
+SD:\WorkSpace\Rasot\src\Library\Rasot.Service\Services\Customers\ICustomerService.csS
+OC:\Users\cgur\AppData\Local\Temp\.NETCoreApp,Version=v2.2.AssemblyAttributes.csf
+bD:\WorkSpace\Rasot\src\Library\Rasot.Service\obj\Debug\netcoreapp2.2\Rasot.Service.AssemblyInfo.cs

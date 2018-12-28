@@ -141,6 +141,7 @@ Select your &lt;a href="https://about.sonarcloud.io"&gt;plan&lt;/a&gt; and start
 &lt;/div&gt;</Property>
     <Property Name="sonar.core.id">BD367519-AWHW8ct9-T_TB3XqouNu</Property>
     <Property Name="sonar.core.startTime">12/21/2018 11:49:54 AM</Property>
+    <Property Name="sonar.exclusions">wwwroot/**</Property>
   </ServerSettings>
   <LocalSettings>
     <Property Name="sonar.organization">cngzgr-github</Property>
