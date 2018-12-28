@@ -1,0 +1,10 @@
+m
+iD:\WorkSpace\Rasot\src\Presentations\Rasot.Web\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cso
+kD:\WorkSpace\Rasot\src\Presentations\Rasot.Web\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cso
+kD:\WorkSpace\Rasot\src\Presentations\Rasot.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.g.cshtml.cs
+{D:\WorkSpace\Rasot\src\Presentations\Rasot.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.csq
+mD:\WorkSpace\Rasot\src\Presentations\Rasot.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.g.cshtml.csƒ
+D:\WorkSpace\Rasot\src\Presentations\Rasot.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cso
+kD:\WorkSpace\Rasot\src\Presentations\Rasot.Web\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.g.cshtml.csm
+iD:\WorkSpace\Rasot\src\Presentations\Rasot.Web\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.g.cshtml.cso
+kD:\WorkSpace\Rasot\src\Presentations\Rasot.Web\obj\Debug\netcoreapp2.2\Rasot.Web.RazorTargetAssemblyInfo.cs

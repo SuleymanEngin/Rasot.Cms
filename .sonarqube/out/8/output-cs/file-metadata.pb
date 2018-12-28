@@ -1,0 +1,9 @@
+>
+<D:\WorkSpace\Rasot\src\Library\Rasot.Data\IRasotDbContext.csM
+KD:\WorkSpace\Rasot\src\Library\Rasot.Data\Mappings\Customers\CustomerMap.csV
+TD:\WorkSpace\Rasot\src\Library\Rasot.Data\Migrations\20181227202619_InitalProject.csa
+]D:\WorkSpace\Rasot\src\Library\Rasot.Data\Migrations\20181227202619_InitalProject.Designer.csW
+SD:\WorkSpace\Rasot\src\Library\Rasot.Data\Migrations\RasotDbContextModelSnapshot.cs=
+;D:\WorkSpace\Rasot\src\Library\Rasot.Data\RasotDbContext.csS
+OC:\Users\cgur\AppData\Local\Temp\.NETCoreApp,Version=v2.2.AssemblyAttributes.cs`
+\D:\WorkSpace\Rasot\src\Library\Rasot.Data\obj\Debug\netcoreapp2.2\Rasot.Data.AssemblyInfo.cs

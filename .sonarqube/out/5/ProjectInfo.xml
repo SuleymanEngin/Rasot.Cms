@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <ProjectName>Rasot.Service</ProjectName>
+  <ProjectLanguage>C#</ProjectLanguage>
+  <ProjectType>Product</ProjectType>
+  <ProjectGuid>9e2dbb8b-a4f5-4e21-8552-cc8d6454635e</ProjectGuid>
+  <FullPath>D:\WorkSpace\Rasot\src\Library\Rasot.Service\Rasot.Service.csproj</FullPath>
+  <IsExcluded>false</IsExcluded>
+  <AnalysisResults />
+  <AnalysisSettings>
+    <Property Name="sonar.cs.roslyn.reportFilePath">D:\WorkSpace\Rasot\src\Library\Rasot.Service\bin\Debug\netcoreapp2.2\Rasot.Service.dll.RoslynCA.json|D:\WorkSpace\Rasot\src\Library\Rasot.Service\bin\Debug\netcoreapp2.2\Rasot.Service.dll.RoslynCA.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPath">D:\WorkSpace\Rasot\.sonarqube\out\5</Property>
+  </AnalysisSettings>
+  <Configuration>Debug</Configuration>
+  <Platform>AnyCPU</Platform>
+  <TargetFramework>netcoreapp2.2</TargetFramework>
+</ProjectInfo>

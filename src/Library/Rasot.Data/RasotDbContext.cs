@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Rasot.Core.Domain;
+using Rasot.Data.Mappings.Contents;
 using Rasot.Data.Mappings.Customers;
 
 namespace Rasot.Data
@@ -24,6 +25,8 @@ namespace Rasot.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CustomerMap());
+            modelBuilder.ApplyConfiguration(new PostMap());
+
             base.OnModelCreating(modelBuilder);
         }
     }
