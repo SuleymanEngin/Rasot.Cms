@@ -1,7 +1,7 @@
 language: csharp
 solution: Rasot.sln
 install:
-  - dotnet restoren
+  - dotnet restore
 matrix:
  include:
    - dotnet: 2.1
