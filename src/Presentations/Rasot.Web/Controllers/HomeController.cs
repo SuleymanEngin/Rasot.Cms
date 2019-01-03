@@ -1,26 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Rasot.Core.Domain.Customers;
-using Rasot.Data;
+﻿using Microsoft.AspNetCore.Mvc;
+using Rasot.Web.Factories;
 using Rasot.Web.Models;
+using System.Diagnostics;
 
 namespace Rasot.Web.Controllers
 {
+
     public class HomeController : Controller
     {
 
-        public HomeController()
-        {
-            
-        }
+    
         public IActionResult Index()
         {
           
-            
             return View();
         }
 

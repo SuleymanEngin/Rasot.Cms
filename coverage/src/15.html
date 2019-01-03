@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>d:\workspace\rasot\src\library\rasot.data\migrations\20181228202549_pageentityadd.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using Microsoft.EntityFrameworkCore.Migrations;
+
+namespace Rasot.Data.Migrations
+{
+    public partial class PageEntityAdd : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: &quot;Page&quot;,
+                columns: table =&gt; new
+                {
+                    Id = table.Column&lt;int&gt;(nullable: false)
+                        .Annotation(&quot;MySQL:AutoIncrement&quot;, true),
+                    Title = table.Column&lt;string&gt;(nullable: true)
+                },
+                constraints: table =&gt;
+                {
+                    table.PrimaryKey(&quot;PK_Page&quot;, x =&gt; x.Id);
+                });
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: &quot;Page&quot;);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[8,9,8,10,0],[9,13,20,20,0],[11,35,16,18,0],[18,17,18,18,0],[19,21,19,60,0],[20,17,20,18,0],[21,9,21,10,0],[24,9,24,10,0],[25,13,26,31,0],[27,9,27,10,0]]);
+    </script>
+  </body>
+</html>

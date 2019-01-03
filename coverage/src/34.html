@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>d:\workspace\rasot\src\library\rasot.service\services\categories\categoryservice.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using Rasot.Core.Domain.Categories;
+using Rasot.Core.Infrastructures;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Rasot.Service.Services.Categories
+{
+    public class CategoryService : ICategoryService
+    {
+        private readonly IRepository&lt;Category&gt; _categoryRepository;
+        public CategoryService(IRepository&lt;Category&gt; categoryRepository)
+        {
+            _categoryRepository = categoryRepository;
+        }
+        public virtual void Delete(Category item)
+        {
+            _categoryRepository.Delete(item);
+        }
+
+        public virtual Category Find(int Id)
+        {
+            return _categoryRepository.Find(Id);
+        }
+
+        public virtual IList&lt;Category&gt; FindAll()
+        {
+            return _categoryRepository.Table.ToList();
+        }
+
+        public virtual void Insert(Category item)
+        {
+            _categoryRepository.Insert(item);
+        }
+
+        public virtual void Update(Category item)
+        {
+            _categoryRepository.Update(item);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[12,9,12,73,0],[13,9,13,10,0],[14,13,14,54,0],[15,9,15,10,0],[17,9,17,10,0],[18,13,18,46,0],[19,9,19,10,0],[22,9,22,10,0],[23,13,23,49,0],[24,9,24,10,0],[27,9,27,10,0],[28,13,28,55,0],[29,9,29,10,0],[32,9,32,10,0],[33,13,33,46,0],[34,9,34,10,0],[37,9,37,10,0],[38,13,38,46,0],[39,9,39,10,0]]);
+    </script>
+  </body>
+</html>

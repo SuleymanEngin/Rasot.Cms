@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Rasot.Core.Domain;
+using Rasot.Data.Mappings.Categories;
 using Rasot.Data.Mappings.Contents;
 using Rasot.Data.Mappings.Customers;
 
 namespace Rasot.Data
 {
-    public class RasotDbContext:DbContext,IRasotDbContext
+    public class RasotDbContext:DbContext,IDbContext
     {
         public RasotDbContext(DbContextOptions<RasotDbContext> options):base(options)
         {
@@ -26,6 +27,8 @@ namespace Rasot.Data
         {
             modelBuilder.ApplyConfiguration(new CustomerMap());
             modelBuilder.ApplyConfiguration(new PostMap());
+            modelBuilder.ApplyConfiguration(new CategoryMap());
+            modelBuilder.ApplyConfiguration(new PostCategoryMappingMap());
 
             base.OnModelCreating(modelBuilder);
         }

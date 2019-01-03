@@ -10,6 +10,9 @@ namespace Rasot.Data.Mappings.Contents
         {
             builder.ToTable("Post");
             builder.HasKey(p => p.Id);
+
+            builder.Ignore(p => p.PostCategories);
+          
         }
     }
 }

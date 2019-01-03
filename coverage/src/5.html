@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>d:\workspace\rasot\src\library\rasot.core\domain\categories\category.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Rasot.Core.Domain.Categories
+{
+    public  class Category:BaseEntity
+    {
+
+
+        public string Name { get; set; }
+        public bool  Deleted { get; set; }
+        public int   ParentCategoryId { get; set; }
+        public virtual Category ParentCategory { get; set; }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[11,30,11,34,0],[11,35,11,39,0],[12,32,12,36,0],[12,37,12,41,0],[13,41,13,45,0],[13,46,13,50,0],[14,50,14,54,0],[14,55,14,59,0]]);
+    </script>
+  </body>
+</html>

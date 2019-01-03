@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>d:\workspace\rasot\src\library\rasot.data\repository.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using Microsoft.EntityFrameworkCore;
+using Rasot.Core.Domain;
+using Rasot.Core.Infrastructures;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Rasot.Data
+{
+    public class Repository&lt;T&gt; : IRepository&lt;T&gt; where T : BaseEntity
+    {
+
+        private readonly IDbContext _DbContext;
+        private DbSet&lt;T&gt; _entities;
+
+        protected virtual DbSet&lt;T&gt; Entities
+        {
+            get {
+
+                    if(_entities==null)
+                    {
+                        _entities = _DbContext.Set&lt;T&gt;();
+                    }
+
+                    return _entities;
+               }
+            
+        }
+        public Repository(IDbContext rasotDbContext)
+        {
+            this._DbContext = rasotDbContext;
+        }
+        public virtual IQueryable&lt;T&gt; Table =&gt; Entities;
+
+        public virtual IQueryable&lt;T&gt; TableAsNoTraking =&gt; Entities.AsNoTracking();
+
+        public virtual void Delete(int Id)
+        {
+            if(Id==0)
+            {
+                throw new ArgumentOutOfRangeException($&quot;Id parameter not available Zero&quot;);
+            }
+
+            var item = Find(Id);
+            Delete(item);
+        }
+
+        public virtual void Delete(T item)
+        {
+            if (item == null)
+            {
+                throw new ArgumentNullException($&quot;Entity not null&quot;);
+            }
+
+            Entities.Remove(item);
+            _DbContext.SaveChanges();
+        }
+
+        public virtual T Find(int Id)
+        {
+            return Entities.Find(Id);
+        }
+
+        public virtual void Insert(T item)
+        {
+            if (item == null)
+            {
+                throw new ArgumentNullException($&quot;Entity not null&quot;);
+            }
+
+            Entities.Add(item);
+            _DbContext.SaveChanges();
+        }
+
+        public virtual void Update(T item)
+        {
+            if (item == null)
+            {
+                throw new ArgumentNullException($&quot;Entity not null&quot;);
+            }
+
+            Entities.Update(item);
+            _DbContext.SaveChanges();
+        }
+
+        public virtual void InsertRange(IEnumerable&lt;T&gt; items)
+        {
+            if (items == null)
+            {
+                throw new ArgumentNullException($&quot;Entity List not null&quot;);
+            }
+            Entities.AddRange(items);
+            _DbContext.SaveChanges();
+        }
+
+        public virtual void UpdateRange(IEnumerable&lt;T&gt; items)
+        {
+            if (items == null)
+            {
+                throw new ArgumentNullException($&quot;Entity List not null&quot;);
+            }
+
+            Entities.UpdateRange(items);
+            _DbContext.SaveChanges();
+        }
+
+        public virtual void DeleteRange(IEnumerable&lt;T&gt; items)
+        {
+            if(items == null)
+            {
+                throw new ArgumentNullException($&quot;Entity List not null&quot;);
+            }
+            Entities.RemoveRange(items);
+            _DbContext.SaveChanges();
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[18,17,18,18,1],[20,21,20,40,1],[21,21,21,22,1],[22,25,22,57,1],[23,21,23,22,1],[25,21,25,38,1],[26,16,26,17,1],[29,9,29,53,1],[30,9,30,10,1],[31,13,31,46,1],[32,9,32,10,1],[33,47,33,55,1],[35,58,35,81,0],[38,9,38,10,0],[39,13,39,22,0],[40,13,40,14,0],[41,17,41,91,0],[44,13,44,33,0],[45,13,45,26,0],[46,9,46,10,0],[49,9,49,10,1],[50,13,50,30,1],[51,13,51,14,1],[52,17,52,69,1],[55,13,55,35,0],[56,13,56,38,0],[57,9,57,10,0],[60,9,60,10,0],[61,13,61,38,0],[62,9,62,10,0],[65,9,65,10,0],[66,13,66,30,0],[67,13,67,14,0],[68,17,68,69,0],[71,13,71,32,0],[72,13,72,38,0],[73,9,73,10,0],[76,9,76,10,0],[77,13,77,30,0],[78,13,78,14,0],[79,17,79,69,0],[82,13,82,35,0],[83,13,83,38,0],[84,9,84,10,0],[87,9,87,10,0],[88,13,88,31,0],[89,13,89,14,0],[90,17,90,74,0],[92,13,92,38,0],[93,13,93,38,0],[94,9,94,10,0],[97,9,97,10,0],[98,13,98,31,0],[99,13,99,14,0],[100,17,100,74,0],[103,13,103,41,0],[104,13,104,38,0],[105,9,105,10,0],[108,9,108,10,0],[109,13,109,30,0],[110,13,110,14,0],[111,17,111,74,0],[113,13,113,41,0],[114,13,114,38,0],[115,9,115,10,0]]);
+    </script>
+  </body>
+</html>

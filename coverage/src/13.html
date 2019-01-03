@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>d:\workspace\rasot\src\library\rasot.data\migrations\20181227202619_initalproject.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using Microsoft.EntityFrameworkCore.Migrations;
+
+namespace Rasot.Data.Migrations
+{
+    public partial class InitalProject : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: &quot;Customer&quot;,
+                columns: table =&gt; new
+                {
+                    Id = table.Column&lt;int&gt;(nullable: false)
+                        .Annotation(&quot;MySQL:AutoIncrement&quot;, true),
+                    Email = table.Column&lt;string&gt;(nullable: true),
+                    Password = table.Column&lt;string&gt;(nullable: true),
+                    PasswordSalt = table.Column&lt;string&gt;(nullable: true),
+                    PasswordFormatType = table.Column&lt;int&gt;(nullable: false)
+                },
+                constraints: table =&gt;
+                {
+                    table.PrimaryKey(&quot;PK_Customer&quot;, x =&gt; x.Id);
+                });
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: &quot;Customer&quot;);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[8,9,8,10,0],[9,13,23,20,0],[11,35,19,18,0],[21,17,21,18,0],[22,21,22,64,0],[23,17,23,18,0],[24,9,24,10,0],[27,9,27,10,0],[28,13,29,35,0],[30,9,30,10,0]]);
+    </script>
+  </body>
+</html>

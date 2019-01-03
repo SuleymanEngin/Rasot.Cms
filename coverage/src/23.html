@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>d:\workspace\rasot\src\library\rasot.data\mappings\contents\postcategorymappingmap.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Rasot.Core.Domain.Contents;
+
+namespace Rasot.Data.Mappings.Contents
+{
+    public class PostCategoryMappingMap : IEntityTypeConfiguration&lt;PostCategoryMapping&gt;
+    {
+        public void Configure(EntityTypeBuilder&lt;PostCategoryMapping&gt; builder)
+        {
+            builder.ToTable(&quot;PostCategoryMapping&quot;);
+            builder.HasKey(p =&gt; p.Id);
+            builder.HasOne(p =&gt; p.Category).WithMany().HasForeignKey(p =&gt; p.CategoryId);
+            builder.HasOne(p =&gt; p.Post).WithMany(p =&gt; p.PostCategories).HasForeignKey(p =&gt; p.PostId);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[10,9,10,10,1],[11,13,11,52,1],[12,13,12,39,1],[13,13,13,89,1],[14,13,14,102,1],[15,9,15,10,1]]);
+    </script>
+  </body>
+</html>

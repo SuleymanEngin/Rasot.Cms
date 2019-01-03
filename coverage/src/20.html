@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>d:\workspace\rasot\src\library\rasot.data\migrations\20181229162123_categoryentityadd.designer.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+// &lt;auto-generated /&gt;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Rasot.Data;
+
+namespace Rasot.Data.Migrations
+{
+    [DbContext(typeof(RasotDbContext))]
+    [Migration(&quot;20181229162123_CategoryEntityAdd&quot;)]
+    partial class CategoryEntityAdd
+    {
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        {
+#pragma warning disable 612, 618
+            modelBuilder
+                .HasAnnotation(&quot;ProductVersion&quot;, &quot;2.2.0-rtm-35687&quot;);
+
+            modelBuilder.Entity(&quot;Rasot.Core.Domain.Categories.Category&quot;, b =&gt;
+                {
+                    b.Property&lt;int&gt;(&quot;Id&quot;)
+                        .ValueGeneratedOnAdd();
+
+                    b.Property&lt;bool&gt;(&quot;Deleted&quot;);
+
+                    b.Property&lt;string&gt;(&quot;Name&quot;);
+
+                    b.Property&lt;int&gt;(&quot;ParentCategoryId&quot;);
+
+                    b.HasKey(&quot;Id&quot;);
+
+                    b.HasIndex(&quot;ParentCategoryId&quot;);
+
+                    b.ToTable(&quot;Category&quot;);
+                });
+
+            modelBuilder.Entity(&quot;Rasot.Core.Domain.Contents.Post&quot;, b =&gt;
+                {
+                    b.Property&lt;int&gt;(&quot;Id&quot;)
+                        .ValueGeneratedOnAdd();
+
+                    b.Property&lt;string&gt;(&quot;Content&quot;);
+
+                    b.Property&lt;string&gt;(&quot;Title&quot;);
+
+                    b.HasKey(&quot;Id&quot;);
+
+                    b.ToTable(&quot;Post&quot;);
+                });
+
+            modelBuilder.Entity(&quot;Rasot.Core.Domain.Contents.PostCategoryMapping&quot;, b =&gt;
+                {
+                    b.Property&lt;int&gt;(&quot;Id&quot;)
+                        .ValueGeneratedOnAdd();
+
+                    b.Property&lt;int&gt;(&quot;CategoryId&quot;);
+
+                    b.Property&lt;int&gt;(&quot;PostId&quot;);
+
+                    b.HasKey(&quot;Id&quot;);
+
+                    b.HasIndex(&quot;CategoryId&quot;);
+
+                    b.HasIndex(&quot;PostId&quot;);
+
+                    b.ToTable(&quot;PostCategoryMapping&quot;);
+                });
+
+            modelBuilder.Entity(&quot;Rasot.Core.Domain.Customers.Customer&quot;, b =&gt;
+                {
+                    b.Property&lt;int&gt;(&quot;Id&quot;)
+                        .ValueGeneratedOnAdd();
+
+                    b.Property&lt;string&gt;(&quot;Email&quot;);
+
+                    b.Property&lt;string&gt;(&quot;Name&quot;);
+
+                    b.Property&lt;string&gt;(&quot;Password&quot;);
+
+                    b.Property&lt;int&gt;(&quot;PasswordFormatType&quot;);
+
+                    b.Property&lt;string&gt;(&quot;PasswordSalt&quot;);
+
+                    b.HasKey(&quot;Id&quot;);
+
+                    b.ToTable(&quot;Customer&quot;);
+                });
+
+            modelBuilder.Entity(&quot;Rasot.Core.Domain.Categories.Category&quot;, b =&gt;
+                {
+                    b.HasOne(&quot;Rasot.Core.Domain.Categories.Category&quot;, &quot;ParentCategory&quot;)
+                        .WithMany()
+                        .HasForeignKey(&quot;ParentCategoryId&quot;)
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity(&quot;Rasot.Core.Domain.Contents.PostCategoryMapping&quot;, b =&gt;
+                {
+                    b.HasOne(&quot;Rasot.Core.Domain.Categories.Category&quot;, &quot;Category&quot;)
+                        .WithMany()
+                        .HasForeignKey(&quot;CategoryId&quot;)
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne(&quot;Rasot.Core.Domain.Contents.Post&quot;, &quot;Post&quot;)
+                        .WithMany(&quot;PostCategories&quot;)
+                        .HasForeignKey(&quot;PostId&quot;)
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+#pragma warning restore 612, 618
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,9,15,10,0],[17,13,18,69,0],[20,13,36,20,0],[21,17,21,18,0],[22,21,23,48,0],[25,21,25,49,0],[27,21,27,48,0],[29,21,29,57,0],[31,21,31,36,0],[33,21,33,52,0],[35,21,35,43,0],[36,17,36,18,0],[38,13,50,20,0],[39,17,39,18,0],[40,21,41,48,0],[43,21,43,51,0],[45,21,45,49,0],[47,21,47,36,0],[49,21,49,39,0],[50,17,50,18,0],[52,13,68,20,0],[53,17,53,18,0],[54,21,55,48,0],[57,21,57,51,0],[59,21,59,47,0],[61,21,61,36,0],[63,21,63,46,0],[65,21,65,42,0],[67,21,67,54,0],[68,17,68,18,0],[70,13,88,20,0],[71,17,71,18,0],[72,21,73,48,0],[75,21,75,49,0],[77,21,77,48,0],[79,21,79,52,0],[81,21,81,59,0],[83,21,83,56,0],[85,21,85,36,0],[87,21,87,43,0],[88,17,88,18,0],[90,13,96,20,0],[91,17,91,18,0],[92,21,95,59,0],[96,17,96,18,0],[98,13,109,20,0],[99,17,99,18,0],[100,21,103,59,0],[105,21,108,59,0],[109,17,109,18,0],[111,9,111,10,0]]);
+    </script>
+  </body>
+</html>

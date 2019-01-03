@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>d:\workspace\rasot\src\tests\rasot.core.tests\customertest.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using Moq;
+using NUnit.Framework;
+using Rasot.Core.Domain.Customers;
+using Rasot.Core.Infrastructures;
+using Rasot.Data;
+using Rasot.Service.Services.Authentications;
+using Rasot.Service.Services.Authentications.Models;
+using Rasot.Service.Services.Customers;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Tests
+{
+    [TestFixture]
+    public class CustomerTest
+    {
+        private Mock&lt;IRepository&lt;Customer&gt;&gt; _customerRepository;
+        private Mock&lt;IDbContext&gt; _dbcontext;
+        [SetUp]
+        public void Setup()
+        {
+            _customerRepository = new Mock&lt;IRepository&lt;Customer&gt;&gt;();
+            _dbcontext = new Mock&lt;IDbContext&gt;();
+
+
+            var customer = new Customer()
+            {
+                Id = 1,
+                Email = &quot;cngz.gur@gmail.com&quot;,
+                Password = &quot;001453&quot;,
+                PasswordSalt = &quot;001453&quot;,
+                PasswordFormatType = 1
+            };
+
+            _customerRepository.Setup(p =&gt; p.Table).Returns(new List&lt;Customer&gt;() { customer}.AsQueryable());
+        }
+
+
+        [Test]
+        public void CustomerInsert()
+        {
+
+          
+            var _customerService = new CustomerService(_customerRepository.Object);
+            var customer = new Rasot.Core.Domain.Customers.Customer();
+            customer.Email = &quot;cngz.gur@gmail.com&quot;;
+            customer.Password = &quot;001453&quot;;
+            customer.PasswordFormatType = 1;
+            customer.PasswordSalt = &quot;123456&quot;;
+            _customerService.Insert(customer);
+        }
+
+        [Test]
+        public void CustomerLogin()
+        {
+            var authService = new AuthenticationService(_customerRepository.Object);
+
+           var result= authService.Login(new Rasot.Service.Services.Authentications.Models.LoginRequest() {
+                 Email=&quot;cngz.gur@gmail.com&quot;,
+                 Password=&quot;001453&quot;
+            });
+            Assert.IsTrue(result.Success);
+        }
+
+        [Test]
+        public void CustomerRegister()
+        {
+            var authService = new AuthenticationService(_customerRepository.Object);
+
+            RegisterRequest customer = new RegisterRequest();
+           
+            customer.Email = &quot;cengiz.gur@hotmail.com.tr&quot;;
+            customer.Password = &quot;001453&quot;;
+            customer.UserName = &quot;Cengiz G�r&quot;;
+
+            var result=authService.Register(customer);
+
+            Assert.IsTrue(result.Success);
+        }
+
+
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[21,9,21,10,1],[22,13,22,69,1],[23,13,23,49,1],[26,13,33,15,1],[35,13,35,109,1],[36,9,36,10,1],[41,9,41,10,1],[44,13,44,84,1],[45,13,45,71,1],[46,13,46,51,1],[47,13,47,42,1],[48,13,48,45,1],[49,13,49,46,1],[50,13,50,47,1],[51,9,51,10,1],[55,9,55,10,1],[56,13,56,85,1],[58,12,61,16,1],[62,13,62,43,1],[63,9,63,10,1],[67,9,67,10,1],[68,13,68,85,1],[70,13,70,62,1],[72,13,72,58,1],[73,13,73,42,1],[74,13,74,46,1],[76,13,76,55,1],[78,13,78,43,1],[79,9,79,10,1]]);
+    </script>
+  </body>
+</html>

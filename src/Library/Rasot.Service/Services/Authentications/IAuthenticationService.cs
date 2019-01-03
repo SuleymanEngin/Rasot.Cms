@@ -4,7 +4,7 @@ namespace Rasot.Service.Services.Authentications
 {
     public  interface IAuthenticationService
     {
-        void Register(RegisterRequest registerRequest);
-        void Login(LoginRequest loginRequest);
+        RegisterResponse Register(RegisterRequest registerRequest);
+        LoginResponse Login(LoginRequest loginRequest);
     }
 }

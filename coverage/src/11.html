@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>d:\workspace\rasot\src\library\rasot.data\rasotdbcontext.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using Microsoft.EntityFrameworkCore;
+using Rasot.Core.Domain;
+using Rasot.Data.Mappings.Categories;
+using Rasot.Data.Mappings.Contents;
+using Rasot.Data.Mappings.Customers;
+
+namespace Rasot.Data
+{
+    public class RasotDbContext:DbContext,IDbContext
+    {
+        public RasotDbContext(DbContextOptions&lt;RasotDbContext&gt; options):base(options)
+        {
+
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseMySQL(&quot;server=localhost;port=3306; database=rasotdb; uid=root; password=001453&quot;);
+            base.OnConfiguring(optionsBuilder);
+        }
+
+        public new  DbSet&lt;TEntity&gt; Set&lt;TEntity&gt;() where TEntity:BaseEntity
+        {
+            return base.Set&lt;TEntity&gt;();
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new CustomerMap());
+            modelBuilder.ApplyConfiguration(new PostMap());
+            modelBuilder.ApplyConfiguration(new CategoryMap());
+            modelBuilder.ApplyConfiguration(new PostCategoryMappingMap());
+
+            base.OnModelCreating(modelBuilder);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[11,73,11,86,1],[12,9,12,10,1],[14,9,14,10,1],[17,9,17,10,1],[18,13,18,112,1],[19,13,19,48,1],[20,9,20,10,1],[23,9,23,10,1],[24,13,24,40,1],[25,9,25,10,1],[27,9,27,10,1],[28,13,28,64,1],[29,13,29,60,1],[30,13,30,64,1],[31,13,31,75,1],[33,13,33,48,1],[34,9,34,10,1]]);
+    </script>
+  </body>
+</html>

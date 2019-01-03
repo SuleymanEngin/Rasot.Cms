@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Library\Rasot.Data\Rasot.Data.csproj" />
+    <ProjectReference Include="..\..\Library\Rasot.Service\Rasot.Service.csproj" />
   </ItemGroup>
 
 </Project>

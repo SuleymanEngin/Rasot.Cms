@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>d:\workspace\rasot\src\presentations\rasot.web\factories\customermodelfactory.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using Rasot.Service.Services.Customers;
+using Rasot.Web.Models.Customers;
+using System;
+
+namespace Rasot.Web.Factories
+{
+    public class CustomerModelFactory : ICustomerModelFactory
+    {
+        private readonly ICustomerService _customerService;
+        public CustomerModelFactory(ICustomerService customerService)
+        {
+            _customerService = customerService;
+        }
+        public virtual CustomerShortModel PrepareCustomerShortModel(int Id)
+        {
+            var customer = _customerService.Find(Id);
+            if(customer ==null)
+            {
+                throw new ArgumentNullException($&quot;Customer&quot;,$&quot;Customer cannot be null&quot;);
+            }
+
+            var customerShortModel = new CustomerShortModel();
+            customerShortModel.Email = customer.Email;
+            customerShortModel.Name = customer.Name;
+
+            return customerShortModel;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[10,9,10,70,1],[11,9,11,10,1],[12,13,12,48,1],[13,9,13,10,1],[15,9,15,10,1],[16,13,16,54,1],[17,13,17,32,1],[18,13,18,14,1],[19,17,19,89,1],[22,13,22,63,0],[23,13,23,55,0],[24,13,24,53,0],[26,13,26,39,0],[27,9,27,10,0]]);
+    </script>
+  </body>
+</html>

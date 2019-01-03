@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>d:\workspace\rasot\src\tests\rasot.core.tests\customermodelfactorytest.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using Moq;
+using NUnit.Framework;
+using Rasot.Core.Domain.Customers;
+using Rasot.Core.Infrastructures;
+using Rasot.Service.Services.Customers;
+using Rasot.Web.Factories;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Rasot.Core.Tests
+{
+    [TestFixture]
+    public class CustomerModelFactoryTest
+    {
+
+        private Mock&lt;ICustomerService&gt; _customerService;
+        private Mock&lt;IRepository&lt;Customer&gt;&gt; _customerRepository;
+
+        [SetUp]
+        public void Setup()
+        {
+
+            _customerService = new Mock&lt;ICustomerService&gt;();
+            _customerRepository = new Mock&lt;IRepository&lt;Customer&gt;&gt;();
+
+            var customer = new Customer();
+            customer.Email = &quot;cngz.gur@gmail.com&quot;;
+            customer.Id = 1;
+            customer.PasswordFormatType = 1;
+            customer.Password = &quot;001453&quot;;
+            customer.PasswordSalt = &quot;123456&quot;;
+
+            _customerRepository.Setup(p =&gt; p.Table).Returns(new List&lt;Customer&gt;() { customer }.AsQueryable());
+
+        }
+
+        [Test]
+        public void PrepareShortModel()
+        {
+            var customerModelFactory = new CustomerModelFactory(_customerService.Object);
+            var model = customerModelFactory.PrepareCustomerShortModel(1);
+
+        
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[21,9,21,10,1],[23,13,23,61,1],[24,13,24,69,1],[26,13,26,43,1],[27,13,27,51,1],[28,13,28,29,1],[29,13,29,45,1],[30,13,30,42,1],[31,13,31,46,1],[33,13,33,110,1],[35,9,35,10,1],[39,9,39,10,1],[40,13,40,90,1],[41,13,41,75,1],[44,9,44,10,0]]);
+    </script>
+  </body>
+</html>
