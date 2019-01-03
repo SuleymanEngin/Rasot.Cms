@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>d:\workspace\rasot\src\library\rasot.data\migrations\20181228203533_pagereplacetopost.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using Microsoft.EntityFrameworkCore.Migrations;
+
+namespace Rasot.Data.Migrations
+{
+    public partial class PageReplaceToPost : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: &quot;Page&quot;);
+
+            migrationBuilder.CreateTable(
+                name: &quot;Post&quot;,
+                columns: table =&gt; new
+                {
+                    Id = table.Column&lt;int&gt;(nullable: false)
+                        .Annotation(&quot;MySQL:AutoIncrement&quot;, true),
+                    Title = table.Column&lt;string&gt;(nullable: true),
+                    Content = table.Column&lt;string&gt;(nullable: true)
+                },
+                constraints: table =&gt;
+                {
+                    table.PrimaryKey(&quot;PK_Post&quot;, x =&gt; x.Id);
+                });
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: &quot;Post&quot;);
+
+            migrationBuilder.CreateTable(
+                name: &quot;Page&quot;,
+                columns: table =&gt; new
+                {
+                    Id = table.Column&lt;int&gt;(nullable: false)
+                        .Annotation(&quot;MySQL:AutoIncrement&quot;, true),
+                    Title = table.Column&lt;string&gt;(nullable: true)
+                },
+                constraints: table =&gt;
+                {
+                    table.PrimaryKey(&quot;PK_Page&quot;, x =&gt; x.Id);
+                });
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[8,9,8,10,0],[9,13,10,31,0],[12,13,24,20,0],[14,35,20,18,0],[22,17,22,18,0],[23,21,23,60,0],[24,17,24,18,0],[25,9,25,10,0],[28,9,28,10,0],[29,13,30,31,0],[32,13,43,20,0],[34,35,39,18,0],[41,17,41,18,0],[42,21,42,60,0],[43,17,43,18,0],[44,9,44,10,0]]);
+    </script>
+  </body>
+</html>

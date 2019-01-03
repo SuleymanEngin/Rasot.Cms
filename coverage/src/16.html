@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>d:\workspace\rasot\src\library\rasot.data\migrations\20181228202549_pageentityadd.designer.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+// &lt;auto-generated /&gt;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Rasot.Data;
+
+namespace Rasot.Data.Migrations
+{
+    [DbContext(typeof(RasotDbContext))]
+    [Migration(&quot;20181228202549_PageEntityAdd&quot;)]
+    partial class PageEntityAdd
+    {
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        {
+#pragma warning disable 612, 618
+            modelBuilder
+                .HasAnnotation(&quot;ProductVersion&quot;, &quot;2.2.0-rtm-35687&quot;);
+
+            modelBuilder.Entity(&quot;Rasot.Core.Domain.Contents.Page&quot;, b =&gt;
+                {
+                    b.Property&lt;int&gt;(&quot;Id&quot;)
+                        .ValueGeneratedOnAdd();
+
+                    b.Property&lt;string&gt;(&quot;Title&quot;);
+
+                    b.HasKey(&quot;Id&quot;);
+
+                    b.ToTable(&quot;Page&quot;);
+                });
+
+            modelBuilder.Entity(&quot;Rasot.Core.Domain.Customers.Customer&quot;, b =&gt;
+                {
+                    b.Property&lt;int&gt;(&quot;Id&quot;)
+                        .ValueGeneratedOnAdd();
+
+                    b.Property&lt;string&gt;(&quot;Email&quot;);
+
+                    b.Property&lt;string&gt;(&quot;Password&quot;);
+
+                    b.Property&lt;int&gt;(&quot;PasswordFormatType&quot;);
+
+                    b.Property&lt;string&gt;(&quot;PasswordSalt&quot;);
+
+                    b.HasKey(&quot;Id&quot;);
+
+                    b.ToTable(&quot;Customer&quot;);
+                });
+#pragma warning restore 612, 618
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,9,15,10,0],[17,13,18,69,0],[20,13,30,20,0],[21,17,21,18,0],[22,21,23,48,0],[25,21,25,49,0],[27,21,27,36,0],[29,21,29,39,0],[30,17,30,18,0],[32,13,48,20,0],[33,17,33,18,0],[34,21,35,48,0],[37,21,37,49,0],[39,21,39,52,0],[41,21,41,59,0],[43,21,43,56,0],[45,21,45,36,0],[47,21,47,43,0],[48,17,48,18,0],[50,9,50,10,0]]);
+    </script>
+  </body>
+</html>

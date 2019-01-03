@@ -15,6 +15,24 @@ namespace Rasot.Data.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
 
+            modelBuilder.Entity("Rasot.Core.Domain.Categories.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("Deleted");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("ParentCategoryId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentCategoryId");
+
+                    b.ToTable("Category");
+                });
+
             modelBuilder.Entity("Rasot.Core.Domain.Contents.Post", b =>
                 {
                     b.Property<int>("Id")
@@ -29,12 +47,32 @@ namespace Rasot.Data.Migrations
                     b.ToTable("Post");
                 });
 
+            modelBuilder.Entity("Rasot.Core.Domain.Contents.PostCategoryMapping", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CategoryId");
+
+                    b.Property<int>("PostId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("PostCategoryMapping");
+                });
+
             modelBuilder.Entity("Rasot.Core.Domain.Customers.Customer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Email");
+
+                    b.Property<string>("Name");
 
                     b.Property<string>("Password");
 
@@ -45,6 +83,27 @@ namespace Rasot.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customer");
+                });
+
+            modelBuilder.Entity("Rasot.Core.Domain.Categories.Category", b =>
+                {
+                    b.HasOne("Rasot.Core.Domain.Categories.Category", "ParentCategory")
+                        .WithMany()
+                        .HasForeignKey("ParentCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Rasot.Core.Domain.Contents.PostCategoryMapping", b =>
+                {
+                    b.HasOne("Rasot.Core.Domain.Categories.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Rasot.Core.Domain.Contents.Post", "Post")
+                        .WithMany("PostCategories")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

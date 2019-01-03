@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>d:\workspace\rasot\src\library\rasot.core\domain\contents\postcategorymapping.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using Rasot.Core.Domain.Categories;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Rasot.Core.Domain.Contents
+{
+    public  class PostCategoryMapping:BaseEntity
+    {
+        public int PostId { get; set; }
+        public int CategoryId { get; set; }
+
+        public virtual Post Post { get; set; }
+        public virtual Category Category { get; set; }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[10,29,10,33,0],[10,34,10,38,0],[11,33,11,37,0],[11,38,11,42,0],[13,36,13,40,0],[13,41,13,45,0],[14,44,14,48,0],[14,49,14,53,0]]);
+    </script>
+  </body>
+</html>

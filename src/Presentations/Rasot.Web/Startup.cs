@@ -10,7 +10,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Rasot.Core.Infrastructures;
 using Rasot.Data;
+using Rasot.Service.Services.Customers;
+using Rasot.Web.Factories;
 
 namespace Rasot.Web
 {
@@ -37,7 +40,17 @@ namespace Rasot.Web
             services.AddDbContext<RasotDbContext>(options => {
                 options.UseMySQL(Configuration["ConnectionStrings:DefaultConnectionString"]);
             });
-            services.AddScoped<IRasotDbContext, RasotDbContext>();
+            services.AddScoped<IDbContext, RasotDbContext>();
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient<ICustomerService, CustomerService>();
+
+
+
+            #region Factory
+
+            services.AddTransient<ICustomerModelFactory, CustomerModelFactory>();
+
+            #endregion
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

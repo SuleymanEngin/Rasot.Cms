@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>d:\workspace\rasot\src\tests\rasot.core.tests\repositorytest.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using Moq;
+using NUnit.Framework;
+using Rasot.Core.Domain.Contents;
+using Rasot.Core.Infrastructures;
+using Rasot.Data;
+using Rasot.Service.Services.Contents;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Rasot.Core.Tests
+{
+    [TestFixture]
+    public   class RepositoryTest
+    {
+        public List&lt;Post&gt; mockData;
+        public Mock&lt;IRepository&lt;Post&gt;&gt; _genericRepository;
+        public IPostService _postService;
+        public Mock&lt;IDbContext&gt; _dbContext;
+
+        [SetUp]
+        public void Setup()
+        {
+            _dbContext = new Mock&lt;IDbContext&gt;();
+
+            _genericRepository = new Mock&lt;IRepository&lt;Post&gt;&gt;();
+            _postService = new PostService(_genericRepository.Object);
+
+            mockData = new List&lt;Post&gt;();
+
+            mockData.Add(new Post() {
+                 Id=1,
+                 Title=&quot;Merhaba D&#252;nya&quot;,
+                 Content=&quot;D&#252;nyanın geleceği yeniden yazılıyor&quot;
+            });
+
+            mockData.Add(new Post()
+            {
+                Id = 2,
+                Title = &quot;Merhaba D&#252;nya&quot;,
+                Content = &quot;D&#252;nyanın geleceği yeniden yazılıyor&quot;
+            });
+            mockData.Add(new Post()
+            {
+                Id = 3,
+                Title = &quot;Merhaba D&#252;nya&quot;,
+                Content = &quot;D&#252;nyanın geleceği yeniden yazılıyor&quot;
+            });
+            mockData.Add(new Post()
+            {
+                Id = 4,
+                Title = &quot;Merhaba D&#252;nya&quot;,
+                Content = &quot;D&#252;nyanın geleceği yeniden yazılıyor&quot;
+            });
+
+            _genericRepository.Setup(p =&gt; p.Table).Returns(mockData.AsQueryable());
+
+        }
+
+        [Test]
+        public void Insert()
+        {
+
+          
+            var newPostItem = new Post()
+            {
+                 Id = 7,
+                 Title=&quot;Merhaba D&#252;nya&quot;,
+                 Content=&quot;Merhaba D&#252;nyanın geleceği robotiumlar&quot;
+            };
+           
+           _postService.Insert(newPostItem);
+
+            var items = _postService.FindAll();
+            var item=items.FirstOrDefault(p =&gt; p.Id == 7);
+        }
+
+        [Test]
+        public void Update()
+        {
+
+            var item = _postService.FindAll().FirstOrDefault(p =&gt; p.Id == 3);
+            item.Title = &quot;Cengiz G&#252;r&quot;;
+            _postService.Update(item);
+        }
+
+        [Test]
+        public void Find()
+        {
+            var item = _postService.FindAll().FirstOrDefault(p =&gt; p.Id == 1);
+
+            Assert.IsNotNull(item);
+        }
+
+        [Test]
+        public void FindAll()
+        {
+           var items= _postService.FindAll();
+            Assert.IsNotNull(items);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[24,9,24,10,1],[25,13,25,49,1],[27,13,27,64,1],[28,13,28,71,1],[30,13,30,41,1],[32,13,36,16,1],[38,13,43,16,1],[44,13,49,16,1],[50,13,55,16,1],[57,13,57,84,1],[59,9,59,10,1],[63,9,63,10,1],[66,13,71,15,1],[73,12,73,45,1],[75,13,75,48,1],[76,13,76,59,1],[76,48,76,57,1],[77,9,77,10,1],[81,9,81,10,1],[83,13,83,78,1],[83,67,83,76,1],[84,13,84,39,1],[85,13,85,39,1],[86,9,86,10,1],[90,9,90,10,1],[91,13,91,78,1],[91,67,91,76,1],[93,13,93,36,1],[94,9,94,10,1],[98,9,98,10,1],[99,12,99,46,1],[100,13,100,37,1],[101,9,101,10,1]]);
+    </script>
+  </body>
+</html>

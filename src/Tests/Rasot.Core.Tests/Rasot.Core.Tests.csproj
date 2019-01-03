@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <SonarQubeTestProject>True</SonarQubeTestProject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,10 +13,13 @@
     <PackageReference Include="nunit" Version="3.11.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.11.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="xunit" Version="2.4.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Library\Rasot.Data\Rasot.Data.csproj" />
     <ProjectReference Include="..\..\Library\Rasot.Service\Rasot.Service.csproj" />
+    <ProjectReference Include="..\..\Presentations\Rasot.Web\Rasot.Web.csproj" />
   </ItemGroup>
 
 </Project>

@@ -8,5 +8,6 @@ namespace Rasot.Service.Services.Customers
     public interface ICustomerService
     {
         void Insert(Customer item);
+        Customer Find(int Id);
     }
 }

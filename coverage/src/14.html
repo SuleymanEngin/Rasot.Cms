@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>d:\workspace\rasot\src\library\rasot.data\migrations\20181227202619_initalproject.designer.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+// &lt;auto-generated /&gt;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Rasot.Data;
+
+namespace Rasot.Data.Migrations
+{
+    [DbContext(typeof(RasotDbContext))]
+    [Migration(&quot;20181227202619_InitalProject&quot;)]
+    partial class InitalProject
+    {
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        {
+#pragma warning disable 612, 618
+            modelBuilder
+                .HasAnnotation(&quot;ProductVersion&quot;, &quot;2.2.0-rtm-35687&quot;);
+
+            modelBuilder.Entity(&quot;Rasot.Core.Domain.Customers.Customer&quot;, b =&gt;
+                {
+                    b.Property&lt;int&gt;(&quot;Id&quot;)
+                        .ValueGeneratedOnAdd();
+
+                    b.Property&lt;string&gt;(&quot;Email&quot;);
+
+                    b.Property&lt;string&gt;(&quot;Password&quot;);
+
+                    b.Property&lt;int&gt;(&quot;PasswordFormatType&quot;);
+
+                    b.Property&lt;string&gt;(&quot;PasswordSalt&quot;);
+
+                    b.HasKey(&quot;Id&quot;);
+
+                    b.ToTable(&quot;Customer&quot;);
+                });
+#pragma warning restore 612, 618
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,9,15,10,0],[17,13,18,69,0],[20,13,36,20,0],[21,17,21,18,0],[22,21,23,48,0],[25,21,25,49,0],[27,21,27,52,0],[29,21,29,59,0],[31,21,31,56,0],[33,21,33,36,0],[35,21,35,43,0],[36,17,36,18,0],[38,9,38,10,0]]);
+    </script>
+  </body>
+</html>

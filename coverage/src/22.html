@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>d:\workspace\rasot\src\library\rasot.data\mappings\customers\customermap.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Rasot.Core.Domain.Customers;
+
+namespace Rasot.Data.Mappings.Customers
+{
+    public class CustomerMap : IEntityTypeConfiguration&lt;Customer&gt;
+    {
+        public void Configure(EntityTypeBuilder&lt;Customer&gt; builder)
+        {
+            builder.ToTable(&quot;Customer&quot;);
+            builder.HasKey(p =&gt; p.Id);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[10,9,10,10,1],[11,13,11,41,1],[12,13,12,39,1],[13,9,13,10,1]]);
+    </script>
+  </body>
+</html>
