@@ -8,8 +8,8 @@ using Rasot.Data;
 namespace Rasot.Data.Migrations
 {
     [DbContext(typeof(RasotDbContext))]
-    [Migration("20181229162123_CategoryEntityAdd")]
-    partial class CategoryEntityAdd
+    [Migration("20190104081430_InitCreate")]
+    partial class InitCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

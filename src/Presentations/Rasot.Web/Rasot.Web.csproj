@@ -1,10 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <UserSecretsId>0a6abda7-96ae-419d-b403-4a99f885b873</UserSecretsId>
+    <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
 
@@ -18,6 +19,7 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Library\Caching\Rasot.MemoryCache\Rasot.MemoryCache.csproj" />
     <ProjectReference Include="..\..\Library\Rasot.Data\Rasot.Data.csproj" />
     <ProjectReference Include="..\..\Library\Rasot.Service\Rasot.Service.csproj" />
   </ItemGroup>

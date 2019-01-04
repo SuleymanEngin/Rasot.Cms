@@ -10,5 +10,7 @@ namespace Rasot.Data
     {
         DbSet<T> Set<T>() where T : BaseEntity;
         int SaveChanges();
+
+        void Migrate();
     }
 }

@@ -2,15 +2,10 @@
 
 namespace Rasot.Data.Migrations
 {
-    public partial class CategoryEntityAdd : Migration
+    public partial class InitCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "Name",
-                table: "Customer",
-                nullable: true);
-
             migrationBuilder.CreateTable(
                 name: "Category",
                 columns: table => new
@@ -30,6 +25,37 @@ namespace Rasot.Data.Migrations
                         principalTable: "Category",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Customer",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:AutoIncrement", true),
+                    Name = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true),
+                    PasswordSalt = table.Column<string>(nullable: true),
+                    PasswordFormatType = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Customer", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Post",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:AutoIncrement", true),
+                    Title = table.Column<string>(nullable: true),
+                    Content = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Post", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -77,14 +103,16 @@ namespace Rasot.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Customer");
+
+            migrationBuilder.DropTable(
                 name: "PostCategoryMapping");
 
             migrationBuilder.DropTable(
                 name: "Category");
 
-            migrationBuilder.DropColumn(
-                name: "Name",
-                table: "Customer");
+            migrationBuilder.DropTable(
+                name: "Post");
         }
     }
 }

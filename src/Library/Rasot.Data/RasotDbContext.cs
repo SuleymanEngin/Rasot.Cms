@@ -10,14 +10,14 @@ namespace Rasot.Data
     {
         public RasotDbContext(DbContextOptions<RasotDbContext> options):base(options)
         {
-
+            
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySQL("server=localhost;port=3306; database=rasotdb; uid=root; password=001453");
-            base.OnConfiguring(optionsBuilder);
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseMySQL("server=localhost;port=3306; database=rasotdb; uid=root; password=001453");
+        //    base.OnConfiguring(optionsBuilder);
+        //}
 
         public new  DbSet<TEntity> Set<TEntity>() where TEntity:BaseEntity
         {
@@ -31,6 +31,11 @@ namespace Rasot.Data
             modelBuilder.ApplyConfiguration(new PostCategoryMappingMap());
 
             base.OnModelCreating(modelBuilder);
+        }
+
+        public  void Migrate()
+        {
+            this.Database.Migrate();
         }
     }
 }

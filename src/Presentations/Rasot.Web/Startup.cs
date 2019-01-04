@@ -10,8 +10,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Rasot.Core.Caching;
 using Rasot.Core.Infrastructures;
 using Rasot.Data;
+using Rasot.MemoryCache;
 using Rasot.Service.Services.Customers;
 using Rasot.Web.Factories;
 
@@ -43,8 +45,8 @@ namespace Rasot.Web
             services.AddScoped<IDbContext, RasotDbContext>();
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<ICustomerService, CustomerService>();
-
-
+            services.AddMemoryCacheManager();
+           
 
             #region Factory
 
@@ -58,6 +60,8 @@ namespace Rasot.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
