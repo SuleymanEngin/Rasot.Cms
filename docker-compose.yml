@@ -1,8 +1,8 @@
 version: '3.4'
 
 services:
-  rasot.web:
-    image: cngzgr/rasot.cms
+  web:
+    image: 127.0.0.1:5000/rasot.cms
     ports:
       - "5001:80"
     depends_on:
@@ -11,7 +11,9 @@ services:
       context: .
       dockerfile: Dockerfile
     links:
+      - redis
       - mysql
+
 
   mysql:
     image: mysql:latest
@@ -22,7 +24,8 @@ services:
       MYSQL_DATABASE: rasotdb
       MYSQL_USER: root
     volumes:
-      - dbdata:/var/lib/mysql
+      - /e/docker/rasot/mysql:/var/lib/mysql
+      - dbdata:/e/docker/rasot/mysql
     restart: always
 
   redis:
