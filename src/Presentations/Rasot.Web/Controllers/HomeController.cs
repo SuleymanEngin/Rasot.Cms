@@ -20,12 +20,9 @@ namespace Rasot.Web.Controllers
         }
         public IActionResult Index()
         {
-             string cacheKey = "customer.first";
-             var customerModel = _cacheManager.Get(cacheKey, () =>
-             {
-                 return _customerModelFactory.PrepareCustomerShortModel(1);
-             }, 10);
-            
+           
+            var model= _customerModelFactory.PrepareCustomerShortModel(1);
+             
 
             return View();
         }

@@ -13,7 +13,7 @@ namespace Rasot.Web.Factories
         }
         public virtual CustomerShortModel PrepareCustomerShortModel(int Id)
         {
-            var customer = _customerService.Find(Id);
+            var customer = _customerService.Find(Id, p => p.Posts);
             if(customer ==null)
             {
                 throw new ArgumentNullException($"Customer",$"Customer cannot be null");

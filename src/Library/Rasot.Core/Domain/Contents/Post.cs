@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Rasot.Core.Domain.Customers;
+using System.Collections.Generic;
 
 namespace Rasot.Core.Domain.Contents
 {
@@ -8,9 +9,12 @@ namespace Rasot.Core.Domain.Contents
 
         public string Title { get; set; }
         public string Content { get; set; }
-        public ICollection<PostCategoryMapping> PostCategories {
+        public virtual ICollection<PostCategoryMapping> PostCategories {
             get => postCategories ?? (postCategories = new List<PostCategoryMapping>());
             protected set => postCategories = value;
         }
+
+        public int CustomerId { get; set; }
+        public virtual Customer Customer { get; set; }
     }
 }

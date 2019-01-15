@@ -10,6 +10,7 @@ namespace Rasot.Data.Mappings.Customers
         {
             builder.ToTable("Customer");
             builder.HasKey(p => p.Id);
+            builder.Ignore(p => p.Posts);
         }
     }
 }

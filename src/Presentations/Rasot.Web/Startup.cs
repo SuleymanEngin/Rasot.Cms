@@ -39,9 +39,12 @@ namespace Rasot.Web
             });
 
 
-            services.AddDbContext<RasotDbContext>(options => {
+            services.AddDbContext<RasotDbContext>(options =>
+            {
+
                 options.UseMySQL(Configuration["ConnectionStrings:DefaultConnectionString"]);
             });
+
             services.AddScoped<IDbContext, RasotDbContext>();
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<ICustomerService, CustomerService>();

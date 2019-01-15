@@ -10,7 +10,7 @@ namespace Rasot.Data.Mappings.Contents
         {
             builder.ToTable("Post");
             builder.HasKey(p => p.Id);
-
+            builder.HasOne(p => p.Customer).WithMany(p => p.Posts).HasForeignKey(f => f.CustomerId);
             builder.Ignore(p => p.PostCategories);
           
         }

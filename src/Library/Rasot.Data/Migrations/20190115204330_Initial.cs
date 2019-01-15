@@ -2,7 +2,7 @@
 
 namespace Rasot.Data.Migrations
 {
-    public partial class InitCreate : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,18 +13,11 @@ namespace Rasot.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
                     Name = table.Column<string>(nullable: true),
-                    Deleted = table.Column<short>(nullable: false),
-                    ParentCategoryId = table.Column<int>(nullable: false)
+                    Deleted = table.Column<short>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Category", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Category_Category_ParentCategoryId",
-                        column: x => x.ParentCategoryId,
-                        principalTable: "Category",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -51,11 +44,18 @@ namespace Rasot.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
                     Title = table.Column<string>(nullable: true),
-                    Content = table.Column<string>(nullable: true)
+                    Content = table.Column<string>(nullable: true),
+                    CustomerId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Post", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Post_Customer_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customer",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -85,9 +85,9 @@ namespace Rasot.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Category_ParentCategoryId",
-                table: "Category",
-                column: "ParentCategoryId");
+                name: "IX_Post_CustomerId",
+                table: "Post",
+                column: "CustomerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PostCategoryMapping_CategoryId",
@@ -103,9 +103,6 @@ namespace Rasot.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Customer");
-
-            migrationBuilder.DropTable(
                 name: "PostCategoryMapping");
 
             migrationBuilder.DropTable(
@@ -113,6 +110,9 @@ namespace Rasot.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Post");
+
+            migrationBuilder.DropTable(
+                name: "Customer");
         }
     }
 }

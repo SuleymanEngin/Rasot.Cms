@@ -2,9 +2,11 @@ version: '3.4'
 
 services:
   web:
-    image: 127.0.0.1:5000/rasot.cms
+    image: cngzgr/rasot.cms
     ports:
       - "5001:80"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
     depends_on:
      - mysql
     build:
@@ -30,10 +32,9 @@ services:
 
   redis:
     image: redis
-    ports: 
+    ports:
       - "6379:6379"
     restart: always
 
 volumes:
    dbdata:
-  

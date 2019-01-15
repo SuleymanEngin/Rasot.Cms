@@ -13,7 +13,7 @@ namespace Rasot.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
+                .HasAnnotation("ProductVersion", "2.2.1-servicing-10028");
 
             modelBuilder.Entity("Rasot.Core.Domain.Categories.Category", b =>
                 {
@@ -24,11 +24,7 @@ namespace Rasot.Data.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("ParentCategoryId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ParentCategoryId");
 
                     b.ToTable("Category");
                 });
@@ -40,9 +36,13 @@ namespace Rasot.Data.Migrations
 
                     b.Property<string>("Content");
 
+                    b.Property<int>("CustomerId");
+
                     b.Property<string>("Title");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Post");
                 });
@@ -85,11 +85,11 @@ namespace Rasot.Data.Migrations
                     b.ToTable("Customer");
                 });
 
-            modelBuilder.Entity("Rasot.Core.Domain.Categories.Category", b =>
+            modelBuilder.Entity("Rasot.Core.Domain.Contents.Post", b =>
                 {
-                    b.HasOne("Rasot.Core.Domain.Categories.Category", "ParentCategory")
-                        .WithMany()
-                        .HasForeignKey("ParentCategoryId")
+                    b.HasOne("Rasot.Core.Domain.Customers.Customer", "Customer")
+                        .WithMany("Posts")
+                        .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
