@@ -22,6 +22,12 @@
     <ProjectReference Include="..\..\Library\Caching\Rasot.MemoryCache\Rasot.MemoryCache.csproj" />
     <ProjectReference Include="..\..\Library\Rasot.Data\Rasot.Data.csproj" />
     <ProjectReference Include="..\..\Library\Rasot.Service\Rasot.Service.csproj" />
+    <ProjectReference Include="..\..\Library\Rasot.Web.Framework\Rasot.Web.Framework.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Modules\" />
   </ItemGroup>
 
 </Project>

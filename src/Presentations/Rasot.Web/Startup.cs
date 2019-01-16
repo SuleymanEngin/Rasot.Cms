@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -13,19 +14,23 @@ using Microsoft.Extensions.DependencyInjection;
 using Rasot.Core.Caching;
 using Rasot.Core.Infrastructures;
 using Rasot.Data;
+using Rasot.Infrastructure;
 using Rasot.MemoryCache;
 using Rasot.Service.Services.Customers;
 using Rasot.Web.Factories;
+using Rasot.Web.Framework.Extensions;
 
 namespace Rasot.Web
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration,IHostingEnvironment environment)
         {
             Configuration = configuration;
+            Environment = environment;
         }
 
+        public IHostingEnvironment Environment { get; set; }
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -38,18 +43,23 @@ namespace Rasot.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            GlobalConfiguration.ContentRootPath= Environment.ContentRootPath;
+            GlobalConfiguration.WebRootPath = Environment.WebRootPath;
 
+            services.AddModules(GlobalConfiguration.ContentRootPath);
             services.AddDbContext<RasotDbContext>(options =>
             {
 
                 options.UseMySQL(Configuration["ConnectionStrings:DefaultConnectionString"]);
             });
-
+           
+            services.AddHttpClient();
             services.AddScoped<IDbContext, RasotDbContext>();
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddMemoryCacheManager();
-           
+
+            var asseml = AppDomain.CurrentDomain.GetAssemblies();
 
             #region Factory
 
@@ -58,6 +68,7 @@ namespace Rasot.Web
             #endregion
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,13 +90,7 @@ namespace Rasot.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseRasotMvc();
         }
     }
 }
