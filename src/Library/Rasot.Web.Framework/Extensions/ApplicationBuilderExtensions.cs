@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc.Internal;
+using Microsoft.Extensions.DependencyInjection;
 using Rasot.Web.Framework.RasotRoute;
 
 namespace Rasot.Web.Framework.Extensions
@@ -10,6 +12,7 @@ namespace Rasot.Web.Framework.Extensions
         {
            app.UseMvc(routes =>
            {
+             
               routes.Routes.Add(new GenericRoute(routes.DefaultHandler));
 
                routes.MapRoute(

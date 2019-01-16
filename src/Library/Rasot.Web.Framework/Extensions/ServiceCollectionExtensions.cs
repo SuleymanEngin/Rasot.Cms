@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Rasot.Infrastructure;
 using Rasot.Infrastructure.Modules;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -12,6 +13,18 @@ namespace Rasot.Web.Framework.Extensions
     public static class ServiceCollectionExtensions
     {
         private static readonly IModuleConfigurationManager _modulesConfig = new ModuleConfigurationManager();
+
+        public static IServiceCollection AddRasotMvc(this IServiceCollection services,IList<Infrastructure.Modules.Module> modules)
+        {
+            var mvcBuilder = services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2);
+
+            foreach (var item in modules)
+            {
+                mvcBuilder.AddApplicationPart(item.Assembly);
+            }
+
+            return services;
+        }
         public static IServiceCollection AddModules(this IServiceCollection services,string rootPath)
         {
             const string moduleManifestName = "module.json";

@@ -5,13 +5,15 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>E:\Github\Rasot.Cms\src\Presentations\Rasot.Web\Modules\Rasot.Module.Cms\</OutputPath>
+    <OutputPath>D:\WorkSpace\Rasot\src\Presentations\Rasot.Web\Modules\Rasot.Module.Cms\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Library\Rasot.Infrastructure\Rasot.Infrastructure.csproj">
       <Private>false</Private>
     </ProjectReference>
+    <ProjectReference Include="..\..\Library\Rasot.Service\Rasot.Service.csproj" />
+    <ProjectReference Include="..\..\Library\Rasot.Web.Framework\Rasot.Web.Framework.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,7 +25,7 @@
 
   <ItemGroup>
     <None Update="module.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

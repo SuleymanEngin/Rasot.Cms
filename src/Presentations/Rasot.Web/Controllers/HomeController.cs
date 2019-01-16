@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Rasot.Core.Caching;
 using Rasot.Web.Factories;
+using Rasot.Web.Framework.Controllers;
 using Rasot.Web.Models;
 using System.Diagnostics;
 
 namespace Rasot.Web.Controllers
 {
 
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
 
 
