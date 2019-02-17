@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http;
 using Moq;
 using NUnit.Framework;
 using Rasot.Core.Domain.Customers;
@@ -16,11 +17,14 @@ namespace Tests
     {
         private Mock<IRepository<Customer>> _customerRepository;
         private Mock<IDbContext> _dbcontext;
+        private Mock<IHttpContextAccessor> _httpContext;
+
         [SetUp]
         public void Setup()
         {
             _customerRepository = new Mock<IRepository<Customer>>();
             _dbcontext = new Mock<IDbContext>();
+            _httpContext = new Mock<IHttpContextAccessor>();
 
 
             var customer = new Customer()
@@ -53,7 +57,7 @@ namespace Tests
         [Test]
         public void CustomerLogin()
         {
-            var authService = new AuthenticationService(_customerRepository.Object);
+            var authService = new AuthenticationService(_customerRepository.Object,_httpContext.Object);
 
            var result= authService.Login(new Rasot.Service.Services.Authentications.Models.LoginRequest() {
                  Email="cngz.gur@gmail.com",
@@ -65,7 +69,7 @@ namespace Tests
         [Test]
         public void CustomerRegister()
         {
-            var authService = new AuthenticationService(_customerRepository.Object);
+            var authService = new AuthenticationService(_customerRepository.Object,_httpContext.Object);
 
             RegisterRequest customer = new RegisterRequest();
            
