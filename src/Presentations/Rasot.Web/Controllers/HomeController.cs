@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Rasot.Core.Caching;
-using Rasot.Web.Factories;
+﻿
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Rasot.Service.Services.Authentications;
 using Rasot.Web.Framework.Controllers;
 using Rasot.Web.Models;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace Rasot.Web.Controllers
@@ -12,22 +14,35 @@ namespace Rasot.Web.Controllers
     {
 
 
-        private readonly ICustomerModelFactory _customerModelFactory;
-        private readonly ICacheManager _cacheManager;
-        public HomeController(ICustomerModelFactory customerModelFactory,ICacheManager cacheManager)
+        private readonly IAuthenticationService _authenticationService;
+   
+        public HomeController(IAuthenticationService authenticationService)
         {
-            _customerModelFactory = customerModelFactory;
-            _cacheManager = cacheManager;
+            _authenticationService = authenticationService;
+           
         }
         public IActionResult Index()
         {
-           
-            var model= _customerModelFactory.PrepareCustomerShortModel(1);
-             
 
+            var loginResponse = _authenticationService.Login(new Service.Services.Authentications.Models.LoginRequest() {
+                 Email="cngz.gur@gmail.com",
+                 Password="001453"
+            });
+
+            _authenticationService.SigIn(loginResponse.ValidCustomer);
+
+            var loginUser = _authenticationService.GetAuthentication();
+          
             return View();
         }
 
+        public dynamic Dynamics(List<string> includes)
+        {
+
+            return null;
+        }
+
+        [Authorize(Roles ="Admine")]
         public IActionResult Privacy()
         {
             return View();

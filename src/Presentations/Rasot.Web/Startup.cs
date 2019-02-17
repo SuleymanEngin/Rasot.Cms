@@ -5,10 +5,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using Rasot.Core.Infrastructures;
 using Rasot.Data;
 using Rasot.Infrastructure;
 using Rasot.MemoryCache;
+using Rasot.Service.Services.Authentications;
+using Rasot.Service.Services.Categories;
+using Rasot.Service.Services.Contents;
 using Rasot.Service.Services.Customers;
 using Rasot.Web.Factories;
 using Rasot.Web.Framework.Extensions;
@@ -49,21 +53,42 @@ namespace Rasot.Web
             });
            
             services.AddHttpClient();
+            services.AddHttpContextAccessor();
             services.AddScoped<IDbContext, RasotDbContext>();
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<IPostService, PostService>();
+            services.AddTransient<IAuthenticationService, AuthenticationService>();
             services.AddMemoryCacheManager();
 
-          
+
+            var AuthenticateScheme = "Authentication";
+
+
+            services.AddAuthentication(option => {
+                option.DefaultScheme = AuthenticateScheme;
+                option.DefaultSignInScheme = "ExternalAuthentication";
+            })
+            .AddCookie(AuthenticateScheme, options =>
+            {
+                options.Cookie.Name = $"Web.{AuthenticateScheme}";
+                options.Cookie.HttpOnly = true;
+                options.LoginPath = "/account/login";
+                options.Cookie.SecurePolicy = CookieSecurePolicy.None;
+            });
+
+
             #region Factory
 
             services.AddTransient<ICustomerModelFactory, CustomerModelFactory>();
+            services.AddTransient<IPostModelFactory, PostModelFactory>();
 
             #endregion
             services.AddRasotMvc(GlobalConfiguration.Modules);
 
-         
 
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -82,6 +107,7 @@ namespace Rasot.Web
                 app.UseHsts();
             }
 
+            app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

@@ -5,11 +5,11 @@ namespace Rasot.Core.Domain.Contents
 {
     public class Post:BaseEntity
     {
-        private ICollection<PostCategoryMapping> postCategories;
+        private List<PostCategoryMapping> postCategories;
 
         public string Title { get; set; }
         public string Content { get; set; }
-        public virtual ICollection<PostCategoryMapping> PostCategories {
+        public virtual List<PostCategoryMapping> PostCategories {
             get => postCategories ?? (postCategories = new List<PostCategoryMapping>());
             protected set => postCategories = value;
         }

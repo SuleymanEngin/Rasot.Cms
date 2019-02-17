@@ -16,7 +16,11 @@ namespace Rasot.Web.Framework.Extensions
 
         public static IServiceCollection AddRasotMvc(this IServiceCollection services,IList<Infrastructure.Modules.Module> modules)
         {
-            var mvcBuilder = services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2);
+            var mvcBuilder = services.AddMvc(options => options.EnableEndpointRouting = false)
+                .AddJsonOptions(options => {
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                })
+                .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2);
 
             foreach (var item in modules)
             {

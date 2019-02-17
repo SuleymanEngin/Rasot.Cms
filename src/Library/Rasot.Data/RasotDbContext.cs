@@ -13,11 +13,11 @@ namespace Rasot.Data
             
         }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseMySQL("server=localhost;port=3306; database=rasotdb; uid=root; password=001453");
-        //    base.OnConfiguring(optionsBuilder);
-        //}
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseMySQL("server=localhost;port=3306; database=apidb; uid=root; password=001453");
+            base.OnConfiguring(optionsBuilder);
+        }
 
         public new  DbSet<TEntity> Set<TEntity>() where TEntity:BaseEntity
         {

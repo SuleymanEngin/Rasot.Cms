@@ -37,6 +37,11 @@ namespace Rasot.Service.Services.Contents
             _postRepository.Insert(item);
         }
 
+        public IQueryable<Post> Query()
+        {
+            return _postRepository.TableAsNoTraking;
+        }
+
         public virtual void Update(Post item)
         {
             _postRepository.Update(item);
